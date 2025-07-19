@@ -28,11 +28,13 @@ def emotion_analyzer():
     joy = response['joy']
     sadness = response['sadness']
     dominant_emotion = response['dominant_emotion']
-    return_str = f"""For the given statement, the system reponse is 
-        'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} 
-        and 'sadness': {sadness}. 
-        The dominant emotion is <strong>{dominant_emotion}</strong>,"""
-
+    if dominant_emotion == None:
+        return_str = f"<strong>Invalid text! Please try again!</strong>"
+    else:
+        return_str = f"""For the given statement, the system reponse is 
+            'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} 
+            and 'sadness': {sadness}. 
+            The dominant emotion is <strong>{dominant_emotion}</strong>,"""
     return return_str
 
 @app.route("/")
