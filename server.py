@@ -2,7 +2,7 @@
     analysis to be executed over the Flask channel and deployed on
     localhost:5000.
 '''
-# Import Flask, render_template, request from the flask pramework package : 
+# Import Flask, render_template, request from the flask pramework package
 from flask import Flask, render_template, request
 # Import the emotion_detector function from the package created:
 from EmotionDetection.emotion_detection import emotion_detector
@@ -28,10 +28,10 @@ def emotion_analyzer():
     joy = response['joy']
     sadness = response['sadness']
     dominant_emotion = response['dominant_emotion']
-    if dominant_emotion == None:
-        return_str = f"<strong>Invalid text! Please try again!</strong>"
+    if dominant_emotion is None:
+        return_str = f"""<strong>Invalid text!{dominant_emotion} Please try again!</strong>"""
     else:
-        return_str = f"""For the given statement, the system reponse is 
+        return_str = f"""For the given statement, the system reponse is
             'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} 
             and 'sadness': {sadness}. 
             The dominant emotion is <strong>{dominant_emotion}</strong>,"""
